@@ -11,30 +11,34 @@ function updateCounter() {
 
 function getRandomX() {
     let x = Math.floor(Math.random() * maxWidth);
-    x = `${x}px`
+    x += "px"
     return x
 }
 
 function getRandomY() {
-    let y = Math.floor(Math.random() * maxHeight);
-    y = `${y}px`
-    return y
+    let y = Math.floor(Math.random() * (maxHeight-minHeight)  +  minHeight);
+    y += "px"
+    return y;
 }
 
 function format(secondsToWait) {
     let min = Math.floor(secondsToWait/60).toString().padStart(2, '0');
     let sec = (secondsToWait % 60).toString().padStart(2, '0');
-    return min+":"+sec
+    return min+":"+sec;
     }
 
 let targets = document.getElementsByClassName("target");
+let targetsContainer = document.getElementById("targets-container");
+let rowContainer = document.getElementById("row")
 let timer = document.getElementById("timer");
 let secondsToWait = 10; // between 10 and 619
 var counterParagraph = document.getElementById("counter");
 var counter = 0;
 const targetSize = 50;
-const maxWidth = document.documentElement.scrollWidth - targetSize;
-const maxHeight = document.documentElement.scrollHeight - targetSize;
+
+const minHeight = rowContainer.scrollHeight
+const maxWidth = targetsContainer.scrollWidth - targetSize;
+const maxHeight = targetsContainer.scrollHeight - targetSize;
 
 timer.innerHTML = format(secondsToWait)
 for (let target of targets) {
