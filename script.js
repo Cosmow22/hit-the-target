@@ -1,7 +1,12 @@
-function  clickHandler(target) {
-    console.log(target.style.left, target.style.top)
+function  targetClickHandler(target) {
     target.style.left = getRandomX()
     target.style.top = getRandomY()
+    updateCounter()
+}
+
+function updateCounter() {
+    counter ++;
+    counterParagraph.innerHTML = counter;
 }
 
 function getRandomX() {
@@ -16,29 +21,33 @@ function getRandomY() {
     return y
 }
 
-
-console.log(
-    document.documentElement.scrollWidth, 
-    document.documentElement.scrollHeight
-)
-
+function format(secondsToWait) {
+    let min = Math.floor(secondsToWait/60).toString().padStart(2, '0');
+    let sec = (secondsToWait % 60).toString().padStart(2, '0');
+    return min+":"+sec
+    }
 
 let targets = document.getElementsByClassName("target");
-
-const targetSize =50// Math.floor(document.documentElement.scrollWidth / 15);
+let timer = document.getElementById("timer");
+let secondsToWait = 10; // between 10 and 619
+var counterParagraph = document.getElementById("counter");
+var counter = 0;
+const targetSize = 50;
 const maxWidth = document.documentElement.scrollWidth - targetSize;
 const maxHeight = document.documentElement.scrollHeight - targetSize;
 
-console.log(targets.style)
-for (let i = 0; i < targets.length; i++) {
-    let target = targets.item(i)
+timer.innerHTML = format(secondsToWait)
+for (let target of targets) {
     target.style.left = getRandomX()
     target.style.top = getRandomY()
-    target.style.width = `${targetSize}px`
-    target.style.height = `${targetSize}px`
-    target.addEventListener("click", () => clickHandler(target))
+    target.addEventListener("click", () => targetClickHandler(target))
 }
 
-document.addEventListener("click", function(event) {
-    console.log(event.clientX, event.clientY);
-});
+let timerInterval = setInterval(() => {
+        secondsToWait--
+        if (secondsToWait === 0) {
+            console.log("Time's up !")
+            clearInterval(timerInterval)
+        }
+        timer.innerHTML = format(secondsToWait)
+    }, 1000)
