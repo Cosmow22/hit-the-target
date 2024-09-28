@@ -1,11 +1,11 @@
-function  targetClickHandler(target) {
+function targetClickHandler(target) {
     target.style.left = getRandomX()
     target.style.top = getRandomY()
     updateCounter()
 }
 
 function updateCounter() {
-    targetsHitCounter ++;
+    targetsHitCounter++;
     for (let tag of targetsHitCounterTags) {
         tag.innerHTML = targetsHitCounter;
     }
@@ -18,22 +18,22 @@ function getRandomX() {
 }
 
 function getRandomY() {
-    let y = Math.floor(Math.random() * (maxHeight-minHeight)  +  minHeight);
+    let y = Math.floor(Math.random() * (maxHeight - minHeight) + minHeight);
     y += "px"
     return y;
 }
 
 function format(secondsToWait) {
-    let min = Math.floor(secondsToWait/60).toString().padStart(2, '0');
+    let min = Math.floor(secondsToWait / 60).toString().padStart(2, '0');
     let sec = (secondsToWait % 60).toString().padStart(2, '0');
-    return min+":"+sec;
-    }
+    return min + ":" + sec;
+}
 
 function showStats() {
     time.innerHTML = "targets in " + initialTimerValue;
-    speed.innerHTML = targetsHitCounter / (initialSecondsToWait/60);
+    speed.innerHTML = targetsHitCounter / (initialSecondsToWait / 60);
     if (totalClicks) {
-        accuracy.innerHTML = Math.round((targetsHitCounter/totalClicks*100)) + "%";
+        accuracy.innerHTML = Math.round((targetsHitCounter / totalClicks * 100)) + "%";
     } else {
         accuracy.innerHTML = "0%"
     }
@@ -69,15 +69,15 @@ for (let target of targets) {
 }
 
 let timerInterval = setInterval(() => {
-        secondsToWait--
-        timer.innerHTML = format(secondsToWait)
-        if (secondsToWait === 0) {
-            clearInterval(timerInterval)
-            showStats()
-        }
-    }, 1000);
+    secondsToWait--
+    timer.innerHTML = format(secondsToWait)
+    if (secondsToWait === 0) {
+        clearInterval(timerInterval)
+        showStats()
+    }
+}, 1000);
 
 targetsContainer.addEventListener("click", () => {
-    totalClicks ++;
-    }
+    totalClicks++;
+}
 );
