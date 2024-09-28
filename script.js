@@ -37,6 +37,8 @@ function showStats() {
     } else {
         accuracyStatDiv.innerHTML = "0%"
     }
+    modal.classList.remove("disabled")
+    overlay.classList.remove("disabled")
     modal.classList.add("active");
     overlay.classList.add("active");
 }
@@ -53,21 +55,22 @@ function setTimerInterval() {
 }
 
 function retry() {
-    console.log("retry")
     modal.classList.remove("active");
     overlay.classList.remove("active");
+    modal.classList.add("disabled")
+    overlay.classList.add("disabled")
     reset()
     setTimerInterval()
 }
 
 function reset() {
-    secondsToWait = 10; // between 10 and 619
+    secondsToWait = initialSecondsToWait; // between 10 and 619
     targetsHitCounter = 0;
     totalClicks = 0;
     timer.innerHTML = initialTimerValue;
 }
 
-var secondsToWait = 10; // between 10 and 619
+var secondsToWait = 5; // between 10 and 619
 var targetsHitCounter = 0;
 var totalClicks = 0;
 
