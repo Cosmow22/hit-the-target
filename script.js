@@ -31,11 +31,13 @@ let targets = document.getElementsByClassName("target");
 let targetsContainer = document.getElementById("targets-container");
 let rowContainer = document.getElementById("row")
 let timer = document.getElementById("timer");
-let secondsToWait = 10; // between 10 and 619
+let secondsToWait = 3; // between 10 and 619
 var counterParagraph = document.getElementById("counter");
 var counter = 0;
-const targetSize = 50;
 
+const modal = document.getElementById("modal");
+const overlay = document.getElementById("overlay");
+const targetSize = 50;
 const minHeight = rowContainer.scrollHeight
 const maxWidth = targetsContainer.scrollWidth - targetSize;
 const maxHeight = targetsContainer.scrollHeight - targetSize;
@@ -49,9 +51,11 @@ for (let target of targets) {
 
 let timerInterval = setInterval(() => {
         secondsToWait--
+        timer.innerHTML = format(secondsToWait)
         if (secondsToWait === 0) {
             console.log("Time's up !")
             clearInterval(timerInterval)
+            modal.classList.add("active")
+            overlay.classList.add("active")
         }
-        timer.innerHTML = format(secondsToWait)
     }, 1000)
