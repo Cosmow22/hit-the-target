@@ -37,6 +37,7 @@ var counter = 0;
 
 const modal = document.getElementById("modal");
 const overlay = document.getElementById("overlay");
+const retryButton = document.getElementById("retry-button");
 const targetSize = 50;
 const minHeight = rowContainer.scrollHeight
 const maxWidth = targetsContainer.scrollWidth - targetSize;

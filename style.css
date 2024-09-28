@@ -60,7 +60,7 @@ body {
     transform: translate(-50%, -50%) scale(1);
 }
 
-#modal .retry-button {
+#modal #retry-button {
     cursor: pointer;
     border: none;
     outline: none;
