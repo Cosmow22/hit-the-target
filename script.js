@@ -30,12 +30,12 @@ function format(secondsToWait) {
 }
 
 function showStats() {
-    time.innerHTML = "targets in " + initialTimerValue;
-    speed.innerHTML = targetsHitCounter / (initialSecondsToWait / 60);
+    timerDurationStatDiv.innerHTML = "targets in " + initialTimerValue;
+    speedStatDiv.innerHTML = targetsHitCounter / (initialSecondsToWait / 60);
     if (totalClicks) {
-        accuracy.innerHTML = Math.round((targetsHitCounter / totalClicks * 100)) + "%";
+        accuracyStatDiv.innerHTML = Math.round((targetsHitCounter / totalClicks * 100)) + "%";
     } else {
-        accuracy.innerHTML = "0%"
+        accuracyStatDiv.innerHTML = "0%"
     }
     modal.classList.add("active");
     overlay.classList.add("active");
@@ -49,9 +49,9 @@ var totalClicks = 0;
 
 const initialSecondsToWait = secondsToWait;
 const initialTimerValue = format(secondsToWait);
-const time = document.getElementById("time")
-const speed = document.getElementById("speed")
-const accuracy = document.getElementById("accuracy")
+const timerDurationStatDiv = document.getElementById("timer-duration-stat")
+const speedStatDiv = document.getElementById("speed-stat-div")
+const accuracyStatDiv = document.getElementById("accuracy-stat-div")
 const targetsHitCounterTags = document.getElementsByClassName("targets-counter");
 const modal = document.getElementById("modal");
 const overlay = document.getElementById("overlay");
