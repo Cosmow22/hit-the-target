@@ -40,15 +40,15 @@ function showStats() {
     modal.classList.add("active");
     overlay.classList.add("active");
 }
-let targets = document.getElementsByClassName("target");
-let targetsContainer = document.getElementById("targets-container");
-let timer = document.getElementById("timer");
 let secondsToWait = 10; // between 10 and 619
 var targetsHitCounter = 0;
 var totalClicks = 0;
 
 const initialSecondsToWait = secondsToWait;
 const initialTimerValue = format(secondsToWait);
+const targets = document.getElementsByClassName("target");
+const targetsContainer = document.getElementById("targets-container");
+const timer = document.getElementById("timer");
 const timerDurationStatDiv = document.getElementById("timer-duration-stat")
 const speedStatDiv = document.getElementById("speed-stat-div")
 const accuracyStatDiv = document.getElementById("accuracy-stat-div")
