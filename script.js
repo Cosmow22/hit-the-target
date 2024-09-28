@@ -5,8 +5,10 @@ function  targetClickHandler(target) {
 }
 
 function updateCounter() {
-    counter ++;
-    counterParagraph.innerHTML = counter;
+    targetsHitCounter ++;
+    for (let tag of targetsHitCounterTags) {
+        tag.innerHTML = targetsHitCounter;
+    }
 }
 
 function getRandomX() {
@@ -27,23 +29,39 @@ function format(secondsToWait) {
     return min+":"+sec;
     }
 
+function showStats() {
+    time.innerHTML = "targets in " + initialTimerValue;
+    speed.innerHTML = targetsHitCounter / (initialSecondsToWait/60);
+    if (totalClicks) {
+        accuracy.innerHTML = Math.round((targetsHitCounter/totalClicks*100)) + "%";
+    } else {
+        accuracy.innerHTML = "0%"
+    }
+    modal.classList.add("active");
+    overlay.classList.add("active");
+}
 let targets = document.getElementsByClassName("target");
 let targetsContainer = document.getElementById("targets-container");
-let rowContainer = document.getElementById("row")
 let timer = document.getElementById("timer");
-let secondsToWait = 3; // between 10 and 619
-var counterParagraph = document.getElementById("counter");
-var counter = 0;
+let secondsToWait = 10; // between 10 and 619
+var targetsHitCounter = 0;
+var totalClicks = 0;
 
+const initialSecondsToWait = secondsToWait;
+const initialTimerValue = format(secondsToWait);
+const time = document.getElementById("time")
+const speed = document.getElementById("speed")
+const accuracy = document.getElementById("accuracy")
+const targetsHitCounterTags = document.getElementsByClassName("targets-counter");
 const modal = document.getElementById("modal");
 const overlay = document.getElementById("overlay");
 const retryButton = document.getElementById("retry-button");
 const targetSize = 50;
-const minHeight = rowContainer.scrollHeight
+const minHeight = document.getElementById("row").scrollHeight
 const maxWidth = targetsContainer.scrollWidth - targetSize;
 const maxHeight = targetsContainer.scrollHeight - targetSize;
 
-timer.innerHTML = format(secondsToWait)
+timer.innerHTML = initialTimerValue;
 for (let target of targets) {
     target.style.left = getRandomX()
     target.style.top = getRandomY()
@@ -54,9 +72,12 @@ let timerInterval = setInterval(() => {
         secondsToWait--
         timer.innerHTML = format(secondsToWait)
         if (secondsToWait === 0) {
-            console.log("Time's up !")
             clearInterval(timerInterval)
-            modal.classList.add("active")
-            overlay.classList.add("active")
+            showStats()
         }
-    }, 1000)
+    }, 1000);
+
+targetsContainer.addEventListener("click", () => {
+    totalClicks ++;
+    }
+);
