@@ -41,16 +41,36 @@ function showStats() {
     overlay.classList.add("active");
 }
 
-let secondsToWait = 10; // between 10 and 619
+function setTimerInterval() {
+    let timerInterval = setInterval(() => {
+        secondsToWait--
+        timer.innerHTML = format(secondsToWait)
+        if (secondsToWait === 0) {
+            clearInterval(timerInterval)
+            showStats()
+        }
+    }, 1000);
+}
+
+function retry() {
+    console.log("retry")
+    modal.classList.remove("active");
+    overlay.classList.remove("active");
+    reset()
+    setTimerInterval()
+}
+
+function reset() {
+    secondsToWait = 10; // between 10 and 619
+    targetsHitCounter = 0;
+    totalClicks = 0;
+    timer.innerHTML = initialTimerValue;
+}
+
+var secondsToWait = 10; // between 10 and 619
 var targetsHitCounter = 0;
 var totalClicks = 0;
 
-const targetSize = 50;
-const minHeight = document.getElementById("row").scrollHeight
-const maxWidth = targetsContainer.scrollWidth - targetSize;
-const maxHeight = targetsContainer.scrollHeight - targetSize;
-const initialTimerValue = format(secondsToWait);
-const initialSecondsToWait = secondsToWait;
 
 // get elements
 const targets = document.getElementsByClassName("target");
@@ -64,6 +84,13 @@ const modal = document.getElementById("modal");
 const overlay = document.getElementById("overlay");
 const retryButton = document.getElementById("retry-button");
 
+const targetSize = 50;
+const minHeight = document.getElementById("row").scrollHeight
+const maxWidth = targetsContainer.scrollWidth - targetSize;
+const maxHeight = targetsContainer.scrollHeight - targetSize;
+const initialTimerValue = format(secondsToWait);
+const initialSecondsToWait = secondsToWait;
+
 timer.innerHTML = initialTimerValue;
 for (let target of targets) {
     target.style.left = getRandomX()
@@ -71,14 +98,7 @@ for (let target of targets) {
     target.addEventListener("click", () => targetClickHandler(target))
 }
 
-let timerInterval = setInterval(() => {
-    secondsToWait--
-    timer.innerHTML = format(secondsToWait)
-    if (secondsToWait === 0) {
-        clearInterval(timerInterval)
-        showStats()
-    }
-}, 1000);
+setTimerInterval()
 
 targetsContainer.addEventListener("click", () => {
     totalClicks++;
