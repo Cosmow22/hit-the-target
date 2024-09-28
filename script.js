@@ -40,12 +40,19 @@ function showStats() {
     modal.classList.add("active");
     overlay.classList.add("active");
 }
+
 let secondsToWait = 10; // between 10 and 619
 var targetsHitCounter = 0;
 var totalClicks = 0;
 
-const initialSecondsToWait = secondsToWait;
+const targetSize = 50;
+const minHeight = document.getElementById("row").scrollHeight
+const maxWidth = targetsContainer.scrollWidth - targetSize;
+const maxHeight = targetsContainer.scrollHeight - targetSize;
 const initialTimerValue = format(secondsToWait);
+const initialSecondsToWait = secondsToWait;
+
+// get elements
 const targets = document.getElementsByClassName("target");
 const targetsContainer = document.getElementById("targets-container");
 const timer = document.getElementById("timer");
@@ -56,10 +63,6 @@ const targetsHitCounterTags = document.getElementsByClassName("targets-counter")
 const modal = document.getElementById("modal");
 const overlay = document.getElementById("overlay");
 const retryButton = document.getElementById("retry-button");
-const targetSize = 50;
-const minHeight = document.getElementById("row").scrollHeight
-const maxWidth = targetsContainer.scrollWidth - targetSize;
-const maxHeight = targetsContainer.scrollHeight - targetSize;
 
 timer.innerHTML = initialTimerValue;
 for (let target of targets) {
