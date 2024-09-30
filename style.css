@@ -97,8 +97,9 @@ body {
     align-items: center;
 }
 
-.number {
+.stat-number {
     font-size: 2rem;
+    --odometer-duration: 5s;
 }
 
 #overlay {
@@ -122,4 +123,24 @@ body {
     transition: 200ms ease-in-out;
     opacity: 0;
     pointer-events: none;
+}
+
+#odometer-target-counter {
+    --odometer-duration: 0.1s;
+}
+
+#odometer-target-counter.odometer-animating-up .odometer-ribbon-inner, #odometer-target-counter.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
+    -webkit-transition-duration: var(--odometer-duration, 0.1s) !important;
+    -moz-transition-duration: var(--odometer-duration, 0.1s) !important;
+    -ms-transition-duration: var(--odometer-duration, 0.1s) !important;
+    -o-transition-duration: var(--odometer-duration, 0.1s) !important;
+    transition-duration: var(--odometer-duration, 0.1s) !important;
+}
+
+.stat-number.odometer-animating-up .odometer-ribbon-inner, .stat-number.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
+    -webkit-transition-duration: var(--odometer-duration, 5s) !important;
+    -moz-transition-duration: var(--odometer-duration, 5s) !important;
+    -ms-transition-duration: var(--odometer-duration, 5s) !important;
+    -o-transition-duration: var(--odometer-duration, 5s) !important;
+    transition-duration: var(--odometer-duration, 5s) !important;
 }

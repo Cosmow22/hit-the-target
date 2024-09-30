@@ -6,9 +6,7 @@ function targetClickHandler(target) {
 
 function updateCounter() {
     targetsHitCounter++;
-    for (let tag of targetsHitCounterTags) {
-        tag.innerHTML = targetsHitCounter;
-    }
+    targetCounterOdometer.update(targetsHitCounter)
 }
 
 function getRandomX() {
@@ -30,20 +28,21 @@ function format(secondsToWait) {
 }
 
 function showStats() {
-    timerDurationStatDiv.innerHTML = "targets in " + initialTimerValue;
-    speedStatDiv.innerHTML = targetsHitCounter / (initialSecondsToWait / 60);
-    if (totalClicks) {
-        accuracyStatDiv.innerHTML = Math.round((targetsHitCounter / totalClicks * 100)) + "%";
-    } else {
-        accuracyStatDiv.innerHTML = "0%"
-    }
     modal.classList.remove("disabled")
     overlay.classList.remove("disabled")
     modal.classList.add("active");
     overlay.classList.add("active");
+    timerDurationStatDiv.innerHTML = "targets in " + initialTimerValue;
+    console.log(targetCounterStatOdometer.value)
+    targetCounterStatOdometer.update(targetsHitCounter);
+    speedStatOdometer.update(targetsHitCounter / (initialSecondsToWait / 60));
+    if (totalClicks) {
+        accuracyStatOdometer.update(Math.round((targetsHitCounter / totalClicks * 100)));
+    };
+    
 }
 
-function setTimerInterval() {
+function setTimer() {
     let timerInterval = setInterval(() => {
         secondsToWait--
         timer.innerHTML = format(secondsToWait)
@@ -59,15 +58,36 @@ function retry() {
     overlay.classList.remove("active");
     modal.classList.add("disabled")
     overlay.classList.add("disabled")
-    reset()
-    setTimerInterval()
-}
+    setTimeout(() => {
+        reset()
+        setTimer()
+    }, 200) // 200ms is the transition duration
+
+    }
 
 function reset() {
+    resetOdometer(targetCounterStatOdometer)
+    resetOdometer(targetCounterOdometer)
+    resetOdometer(speedStatOdometer)
+    resetOdometer(accuracyStatOdometer)
     secondsToWait = initialSecondsToWait; // between 10 and 619
     targetsHitCounter = 0;
     totalClicks = 0;
     timer.innerHTML = initialTimerValue;
+}
+
+function resetOdometer(od, value=0) {
+    od.value = value;
+    od.render()
+}
+
+function change(className, odometerDuration) {
+    odometerDuration += "s";
+    console.log(odometerDuration)
+    document.querySelectorAll(className).forEach((e) => {
+        e.style.setProperty('--odometer-duration', odometerDuration)
+        console.log(e.style)
+    });
 }
 
 var secondsToWait = 5; // between 10 and 619
@@ -75,17 +95,40 @@ var targetsHitCounter = 0;
 var totalClicks = 0;
 
 
-// get elements
+// main page elements
 const targets = document.getElementsByClassName("target");
 const targetsContainer = document.getElementById("targets-container");
 const timer = document.getElementById("timer");
-const timerDurationStatDiv = document.getElementById("timer-duration-stat")
-const speedStatDiv = document.getElementById("speed-stat-div")
-const accuracyStatDiv = document.getElementById("accuracy-stat-div")
-const targetsHitCounterTags = document.getElementsByClassName("targets-counter");
+// modal elements
 const modal = document.getElementById("modal");
 const overlay = document.getElementById("overlay");
 const retryButton = document.getElementById("retry-button");
+    // stat divs
+const targetCounterStatDiv = document.getElementById("target-counter-stat-div")
+const timerDurationStatDiv = document.getElementById("timer-duration-stat")
+const speedStatDiv = document.getElementById("speed-stat-div")
+const accuracyStatDiv = document.getElementById("accuracy-stat-div")
+
+
+var targetCounterOdometer = new Odometer({
+    el: document.querySelector("#odometer-target-counter"),
+    value: 0,
+});
+
+var targetCounterStatOdometer = new Odometer({
+    el: targetCounterStatDiv,
+    value: 0,
+}); 
+
+var speedStatOdometer = new Odometer({
+    el: speedStatDiv,
+    value: 0,
+});
+
+var accuracyStatOdometer = new Odometer({
+    el: accuracyStatDiv,
+    value: 0,
+});
 
 const targetSize = 50;
 const minHeight = document.getElementById("row").scrollHeight
@@ -101,7 +144,7 @@ for (let target of targets) {
     target.addEventListener("click", () => targetClickHandler(target))
 }
 
-setTimerInterval()
+setTimer()
 
 targetsContainer.addEventListener("click", () => {
     totalClicks++;
