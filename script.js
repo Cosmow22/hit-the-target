@@ -90,7 +90,7 @@ function change(className, odometerDuration) {
     });
 }
 
-var secondsToWait = 5; // between 10 and 619
+var secondsToWait = 75; // between 10 and 619
 var targetsHitCounter = 0;
 var totalClicks = 0;
 
@@ -130,7 +130,7 @@ var accuracyStatOdometer = new Odometer({
     value: 0,
 });
 
-const targetSize = 50;
+const targetSize = 100;
 const minHeight = document.getElementById("row").scrollHeight
 const maxWidth = targetsContainer.scrollWidth - targetSize;
 const maxHeight = targetsContainer.scrollHeight - targetSize;

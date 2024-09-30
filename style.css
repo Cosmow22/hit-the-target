@@ -41,11 +41,20 @@ div, button, .odometer-value {
 .target {
     position: absolute;
     background-color: blue;
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
 }
-
+.target img {
+    /* disable the ability to highlight the img */
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    /* disable drag, not working on Firefox*/
+    user-drag: none;
+    -webkit-user-drag: none;
+}
 #modal {
     position: fixed;
     top: 50%;
