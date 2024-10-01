@@ -1,8 +1,11 @@
-*, *::after, *::before {
+*,
+*::after,
+*::before {
     box-sizing: border-box;
-  }
+}
 
-html, body {
+html,
+body {
     width: 100%;
     height: 100%;
 }
@@ -14,7 +17,9 @@ body {
     padding: 0;
 }
 
-div, button, .odometer-value {
+div,
+button,
+.odometer-value {
     font-family: "Concert One", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -24,13 +29,18 @@ div, button, .odometer-value {
     cursor: url('assets/cursor.png') 32 32, auto;
     width: 100%;
     height: 100%;
-    background-color: yellow;
+    /* background-color: yellow; */
 }
 
 #row {
     display: flex;
     justify-content: space-between;
-    background-color: greenyellow;
+    /* background-color: greenyellow; */
+}
+
+#targets-container,
+#row {
+    background-image: url("assets/background.png");
 }
 
 .info {
@@ -45,6 +55,7 @@ div, button, .odometer-value {
     height: 100px;
     border-radius: 50%;
 }
+
 .target img {
     /* disable the ability to highlight the img */
     user-select: none;
@@ -55,6 +66,7 @@ div, button, .odometer-value {
     user-drag: none;
     -webkit-user-drag: none;
 }
+
 #modal {
     position: fixed;
     top: 50%;
@@ -69,16 +81,18 @@ div, button, .odometer-value {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
+}
+
 #modal.active {
     transition: 200ms ease-in-out;
     transform: translate(-50%, -50%) scale(1);
 }
+
 #modal.disabled {
     transition: 200ms ease-in-out;
     transform: translate(-50%, -50%) scale(0);
 }
+
 #modal #retry-button {
     cursor: pointer;
     border: none;
@@ -126,8 +140,8 @@ div, button, .odometer-value {
     bottom: 0;
     background-color: rgba(0, 0, 0, .5);
     pointer-events: none;
-  }
-  
+}
+
 #overlay.active {
     transition: 200ms ease-in-out;
     opacity: 1;
@@ -144,7 +158,8 @@ div, button, .odometer-value {
     --odometer-duration: 0.1s;
 }
 
-#odometer-target-counter.odometer-animating-up .odometer-ribbon-inner, #odometer-target-counter.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
+#odometer-target-counter.odometer-animating-up .odometer-ribbon-inner,
+#odometer-target-counter.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
     -webkit-transition-duration: var(--odometer-duration, 0.1s) !important;
     -moz-transition-duration: var(--odometer-duration, 0.1s) !important;
     -ms-transition-duration: var(--odometer-duration, 0.1s) !important;
@@ -152,7 +167,8 @@ div, button, .odometer-value {
     transition-duration: var(--odometer-duration, 0.1s) !important;
 }
 
-.stat-number.odometer-animating-up .odometer-ribbon-inner, .stat-number.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
+.stat-number.odometer-animating-up .odometer-ribbon-inner,
+.stat-number.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
     -webkit-transition-duration: var(--odometer-duration, 5s) !important;
     -moz-transition-duration: var(--odometer-duration, 5s) !important;
     -ms-transition-duration: var(--odometer-duration, 5s) !important;
