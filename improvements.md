@@ -2,7 +2,7 @@
 
 ## Top priority
 
-- fix hit box bug with targets
+- fix hit box bug with targets DONE
 - add background DONE
 
 ## lower priority

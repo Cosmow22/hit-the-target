@@ -38,7 +38,7 @@ button,
 
 #targets-container,
 #row {
-    background-image: url("assets/background.png");
+    background-image: url("../assets/background.png");
 }
 
 .info {
@@ -63,6 +63,7 @@ button,
     /* disable drag, not working on Firefox*/
     user-drag: none;
     -webkit-user-drag: none;
+    border-radius: 50%; /*to avoid the div to take the shape of the img */
 }
 
 #modal {
