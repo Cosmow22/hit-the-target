@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aim</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/themes/odometer-theme-default.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/themes/odometer-theme-default.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
     <script src="script.js" defer></script>
 </head>
+
 <body>
     <div id="row">
         <div class="info" id="timer" style="padding-left: 10px"></div>
-        <div class="info" id="odometer-target-counter" 
-        style="padding-right: 10px">
+        <div class="info" id="odometer-target-counter" style="padding-right: 10px">
             0
         </div>
     </div>
     <div id="targets-container">
         <div class="target">
-            <img src="../assets/target.svg" width="100"/>
+            <img src="../assets/target.svg" width="100" />
         </div>
         <div class="target">
-            <img src="../assets/target.svg" width="100"/>
+            <img src="../assets/target.svg" width="100" />
         </div>
         <div class="target">
-            <img src="../assets/target.svg" width="100"/>
+            <img src="../assets/target.svg" width="100" />
         </div>
         <div class="target">
-            <img src="../assets/target.svg" width="100"/>
+            <img src="../assets/target.svg" width="100" />
         </div>
     </div>
     <div id="modal">
@@ -53,9 +55,10 @@
             </div>
         </div>
         <button id="retry-button" onclick="retry()">Retry &circlearrowleft;</button>
-      </div>
-      <div id="overlay"></div>
+    </div>
+    <div id="overlay"></div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/odometer.min.js"></script>
 </body>
+
 </html>
