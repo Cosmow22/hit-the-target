@@ -90,7 +90,7 @@ function change(className, odometerDuration) {
     });
 }
 
-var secondsToWait = 75; // between 10 and 619
+var secondsToWait = 1; // between 10 and 619
 var targetsHitCounter = 0;
 var totalClicks = 0;
 
@@ -150,3 +150,27 @@ targetsContainer.addEventListener("click", () => {
     totalClicks++;
 }
 );
+
+function updateLinearGradient(x) {
+    const width = retryButton.getBoundingClientRect().width
+    const top = retryButton.getBoundingClientRect().left
+    let x1 = (x-top)-width*30/100
+    let x2 = (x-top)+width*30/100
+    retryButton.style.setProperty(
+        "background",
+        `linear-gradient(
+            to right, #E1581E ${x1}px, #ff9a00 ${x-top}px, #E1581E ${x2}px
+            )`,
+            "important" // remember to test without it
+        )
+    //retryButton.setAttribute("background-color", "#ff9a00")
+    console.log(retryButton.style)
+}
+
+document.querySelector("#modal #retry-button").addEventListener(
+    "mousemove", (event) => {
+        //console.log(event.clientX, event.clientY)
+        //console.log(retryButton.getBoundingClientRect().width)
+        updateLinearGradient(event.clientX)
+    }
+)
