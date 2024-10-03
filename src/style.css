@@ -98,17 +98,10 @@ button,
     background: none;
     font-size: 1.5rem;
     border-top: 3px solid black;
-    background: linear-gradient(
-        to right,   #E1581E 20%, #0000 50%, #E1581E 80%
-        );
     background-color: #E1581E;
     transition: all 200ms ease-in;
     width: 100%;
 }
-/*
-#modal #retry-button:hover {
-    background-color: rgb(255, 154, 0);
-}*/
 
 #modal .title {
     font-size: 1.25rem;
