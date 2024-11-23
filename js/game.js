@@ -29,6 +29,5 @@ function reset() {
 export function stopGame() {
     showModal()
     timerDurationStatDiv.innerHTML = "targets in " + secondsToWait + "s";
-    console.log(totalClicks, "total clicks")
     animateStats(totalClicks)
 }

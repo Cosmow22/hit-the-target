@@ -8,19 +8,9 @@
         function isMobile() {
             return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         }
-        function windowIsTooSmall() {
-            console.log(window.screen.width, window.screen.height)
-            console.log(window.innerWidth, window.innerHeight)
-            console.log(document.body.getBoundingClientRect().right)
-            if (window.screen.width < 1280 ||  window.screen.height < 960) {
-                return true;
-            } else {
-                return false;
-            }
-        }
         // Redirection en fonction de l'appareil
         window.onload = function() {
-            if (isMobile() || windowIsTooSmall()) {
+            if (isMobile()) {
                 window.location.href = "mobile.html";
             } else {
                 window.location.href = "game.html";
