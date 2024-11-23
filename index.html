@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirection</title>
+    <script>
+        function isMobile() {
+            return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+        function windowIsTooSmall() {
+            console.log(window.screen.width, window.screen.height)
+            console.log(window.innerWidth, window.innerHeight)
+            console.log(document.body.getBoundingClientRect().right)
+            if (window.screen.width < 1280 ||  window.screen.height < 960) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        // Redirection en fonction de l'appareil
+        window.onload = function() {
+            if (isMobile() || windowIsTooSmall()) {
+                window.location.href = "mobile.html";
+            } else {
+                window.location.href = "game.html";
+            }
+        };
+    </script>
+</head>
+<body>
+    Redirection...
+</body>
+</html>

@@ -1,3 +1,5 @@
+import { targetsContainer } from "./consts.js";
+
 const targetSize = 100;
 const minHeight = document.getElementById("row").scrollHeight;
 const maxWidth = targetsContainer.scrollWidth - targetSize;

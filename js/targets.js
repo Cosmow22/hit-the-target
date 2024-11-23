@@ -1,9 +1,9 @@
 import { 
     getRandomX, 
     getRandomY,
-} from "./js/math.js"
+} from "./math.js"
 
-export function placeRandomly(target) {
+export function placeRandomly(event, target) {
     target.style.left = getRandomX()
     target.style.top = getRandomY()
 }

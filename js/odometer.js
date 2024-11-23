@@ -1,6 +1,10 @@
+import { secondsToWait, targetsContainer } from "./consts";
+
+
 const targetCounterStatDiv = document.getElementById("target-counter-stat-div")
 const speedStatDiv = document.getElementById("speed-stat-div")
 const accuracyStatDiv = document.getElementById("accuracy-stat-div")
+
 
 var targetCounterOdometer = new Odometer({
     el: document.querySelector("#odometer-target-counter"),
@@ -36,16 +40,13 @@ export function resetOdometers() {
     })
 }
 
-export function animateStats() {
+export function animateStats(totalClicks) {
     targetCounterStatOdometer.update(targetCounterOdometer.value);
-    speedStatOdometer.update(targetsHitCounter / (initialSecondsToWait / 60));
-    if (totalClicks) {
-        accuracyStatOdometer.update(Math.round((targetsHitCounter / totalClicks * 100)));
-    };
+    speedStatOdometer.update(targetCounterOdometer.value / (secondsToWait / 60));
+    accuracyStatOdometer.update(Math.round((targetCounterOdometer.value / totalClicks * 100)));
 }
 
 export function updateCounter() {
-    targetsHitCounter++;
     targetCounterOdometer.update(targetCounterOdometer.value + 1)
 }
 

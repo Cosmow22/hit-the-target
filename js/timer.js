@@ -1,4 +1,4 @@
-import { stopGame } from "./js/game.js"
+import { stopGame } from "./game.js"
 
 export const alarmClock = document.getElementById("timer");
 
@@ -8,7 +8,7 @@ export function format(secondsToWait) {
     return min + ":" + sec;
 }
 
-export function setTimer(timespan) {0
+export function setTimer(timespan) {
     let timer = setInterval(() => {
         timespan--
         alarmClock.innerHTML = format(timespan)

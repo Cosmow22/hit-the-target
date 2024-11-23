@@ -14,4 +14,4 @@ I have turned the target into svg.
 
 ### Code
 
-the code is une is under [MIT license](LICENSE.MIT).
+The code is une is under [MIT license](LICENSE.MIT).

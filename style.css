@@ -26,7 +26,7 @@ button,
 }
 
 #targets-container {
-    cursor: url('../assets/cursor.png') 32 32, auto;
+    cursor: url('./assets/cursor.png') 32 32, auto;
     width: 100%;
     height: 100%;
 }
@@ -38,7 +38,7 @@ button,
 
 #targets-container,
 #row {
-    background-image: url("../assets/background.png");
+    background-image: url("./assets/background.png");
 }
 
 .info {
