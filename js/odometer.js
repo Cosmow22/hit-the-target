@@ -1,4 +1,4 @@
-import { secondsToWait, targetsContainer } from "./consts";
+import { secondsToWait, targetsContainer } from "./consts.js";
 
 
 const targetCounterStatDiv = document.getElementById("target-counter-stat-div")

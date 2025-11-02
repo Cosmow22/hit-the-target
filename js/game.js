@@ -1,4 +1,4 @@
-import { showModal } from "./responsive";
+import { showModal } from "./responsive.js";
 import { animateStats, resetOdometers } from "./odometer.js"
 import { setTimer, alarmClock, format } from "./timer.js";
 import { secondsToWait, targetsContainer } from "./consts.js";
