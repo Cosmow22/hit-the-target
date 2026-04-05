@@ -1,8 +1,6 @@
-# hit the target
+# Licenses
 
-## Licenses
-
-### Assets
+## Assets
 
 Credits to Kenney.nl
 
@@ -12,6 +10,6 @@ I have removed transparents pixels of the background.
 I have deleted the last row of pixels of the cursor so it's 64x64 (it was 64x65).
 I have turned the target into svg.
 
-### Code
+## Code
 
 The code is une is under [MIT license](LICENSE.MIT).
